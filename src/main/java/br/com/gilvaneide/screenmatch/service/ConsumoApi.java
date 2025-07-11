@@ -1,12 +1,14 @@
 package br.com.gilvaneide.screenmatch.service;
 
+import org.springframework.boot.CommandLineRunner;
+
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
-public class ConsumoApi {
+public class ConsumoApi implements CommandLineRunner {
 
     public String obterDados(String endereco) {
         HttpClient client = HttpClient.newHttpClient();
@@ -27,6 +29,7 @@ public class ConsumoApi {
         return json;
     }
 
+    @Override
     public void run(String... args) throws Exception {
         var consumoApi = new ConsumoApi();
         var json = consumoApi.obterDados("https://www.omdbapi.com/?t=gilmore+girls&apikey=9de8e5d7");
