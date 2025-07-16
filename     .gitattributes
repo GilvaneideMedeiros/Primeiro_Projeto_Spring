@@ -1,0 +1,8 @@
+    # Definir o comportamento padrão para arquivos de texto
+    * text=auto
+
+    # Forçar a normalização para tipos de arquivos de texto comuns
+    *.java      text
+    *.properties text
+    *.xml       text
+    *.md        text
