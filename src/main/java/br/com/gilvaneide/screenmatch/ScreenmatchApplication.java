@@ -61,20 +61,15 @@ public class ScreenmatchApplication implements CommandLineRunner {
         // 5. Obtém dados de uma temporada específica da API do OMDB
         List<DadosTemporada> temporadas = new ArrayList<>();
 
-        for (int temporada = 1; temporada <= dados.totalTemporadas(); temporada++) {
+        for (int i = 1; i <= dados.totalTemporadas(); i++) {
             var jsonTemporada = consumoApi.obterDados(
-                "https://www.omdbapi.com/?t=gilmore+girls&season=" + temporada + "&apikey=9de8e5d7");
-            System.out.println("\nJSON bruto da temporada: " + jsonTemporada);
+                "https://www.omdbapi.com/?t=gilmore+girls&season=" + i + "&apikey=9de8e5d7");
 
             // 6. Converte o JSON da temporada para um objeto DadosTemporada
             DadosTemporada dadosTemporada = conversor.obterDados(jsonTemporada, DadosTemporada.class);
-            System.out.println("\nDados da temporada convertidos: " + dadosTemporada);
-
             // Adiciona a temporada ao array de temporadas
             temporadas.add(dadosTemporada);
            }
-
-           temporadas.forEach(System.out::println);
 
         System.out.println("\nDADOS DE TODAS AS TEMPORADAS: ");
         temporadas.forEach(System.out::println);
