@@ -1,6 +1,5 @@
 package br.com.gilvaneide.screenmatch.principal;
 
-import br.com.gilvaneide.screenmatch.model.DadosEpisodio;
 import br.com.gilvaneide.screenmatch.model.DadosSerie;
 import br.com.gilvaneide.screenmatch.model.DadosTemporada;
 import br.com.gilvaneide.screenmatch.service.ConsumoApi;
@@ -43,8 +42,11 @@ public class Principal {
 //            }
 //        }
 
-        temporadas.forEach(t -> t.episodios().forEach(e -> System.out.println(e.titulo())));
-        System.out.println("\nDADOS DE TODAS AS TEMPORADAS: ");
-        temporadas.forEach(System.out::println);
+        System.out.println("\n=== Títulos dos Episódios por Temporada ===");
+        temporadas.forEach(t -> {
+            System.out.println("\n** Temporada " + t.numero() + " **");
+            t.episodios().forEach(e -> System.out.println("  - " + e.titulo()));
+        });
     }
 }
+
